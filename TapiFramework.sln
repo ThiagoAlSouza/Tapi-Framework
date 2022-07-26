@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32630.192
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TapiFramework", "TapiFramework\TapiFramework.csproj", "{4974EBA8-D6E7-47CA-B9A9-52D5542A99DB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4974EBA8-D6E7-47CA-B9A9-52D5542A99DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4974EBA8-D6E7-47CA-B9A9-52D5542A99DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4974EBA8-D6E7-47CA-B9A9-52D5542A99DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4974EBA8-D6E7-47CA-B9A9-52D5542A99DB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3CACE926-6A04-46FC-9B39-728AE7FEA8A4}
+	EndGlobalSection
+EndGlobal
