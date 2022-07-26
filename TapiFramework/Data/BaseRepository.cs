@@ -5,11 +5,48 @@ namespace TapiFramework.Data
 {
     public class BaseRepository<T> : IBaseRepository<T> where T : class
     {
-        private readonly DbContext context; 
+        private readonly DbContext context;
+
         public BaseRepository(DbContext context)
         {
             this.context = context;
         }
+
+        #region Methods Synchronous
+
+        public IEnumerable<T> GetAll()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Add(T entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void AddRange(IEnumerable<T> entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Update(T entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Remove(T entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void RemoveRange(IEnumerable<T> entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        #endregion
+
+        #region Methods Asynchronous
 
         public async Task<IEnumerable<T>> GetAllAsync()
         {
@@ -40,5 +77,7 @@ namespace TapiFramework.Data
         {
             throw new NotImplementedException();
         }
+
+        #endregion
     }
 }
