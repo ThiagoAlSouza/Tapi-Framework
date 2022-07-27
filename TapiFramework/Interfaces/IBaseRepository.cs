@@ -1,27 +1,26 @@
-﻿namespace TapiFramework.Interfaces
+﻿namespace TapiFramework.Interfaces;
+
+public interface IBaseRepository<T> where T : class
 {
-    public interface IBaseRepository<T> where T : class
-    {
-        #region Methods Synchronous
-        
-        IEnumerable<T> GetAll(); 
-        void Add(T entity);
-        void AddRange(IEnumerable<T> entity); 
-        void Update(T entity);
-        void Remove(T entity);
-        void RemoveRange(IEnumerable<T> entity);    
+    #region Methods Synchronous
 
-        #endregion
+    IEnumerable<T> GetAll();
+    void Add(T entity);
+    void AddRange(IEnumerable<T> entity);
+    void Update(T entity);
+    void Remove(T entity);
+    void RemoveRange(IEnumerable<T> entity);
 
-        #region Methods Asynchronous
+    #endregion
 
-        Task<IEnumerable<T>> GetAllAsync();
-        Task AddAsync(T entity);
-        Task AddRangeAsync(IEnumerable<T> entity);  
-        Task UpdateAsync(T entity); 
-        Task RemoveAsync(T entity);
-        Task RemoveRangeAsync(IEnumerable<T> entity);
+    #region Methods Asynchronous
 
-        #endregion
-    }
+    Task<IEnumerable<T>> GetAllAsync();
+    Task AddAsync(T entity);
+    Task AddRangeAsync(IEnumerable<T> entity);
+    Task UpdateAsync(T entity);
+    Task RemoveAsync(T entity);
+    Task RemoveRangeAsync(IEnumerable<T> entity);
+
+    #endregion
 }
