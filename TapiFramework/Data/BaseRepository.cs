@@ -3,7 +3,7 @@ using TapiFramework.Interfaces;
 
 namespace TapiFramework.Data;
 
-public class BaseRepository<T> : IBaseRepository<T> where T : class
+public abstract class BaseRepository<T> : IBaseRepository<T> where T : class
 {
     private readonly DbContext context;
 
@@ -59,9 +59,10 @@ public class BaseRepository<T> : IBaseRepository<T> where T : class
         await context.SaveChangesAsync();
     }
 
-    public Task AddRangeAsync(IEnumerable<T> entity)
+    public async Task AddRangeAsync(IEnumerable<T> entities)
     {
-        throw new NotImplementedException();
+        await context.Set<T>().AddRangeAsync(entities);
+        await context.SaveChangesAsync();
     }
 
     public Task UpdateAsync(T entity)
