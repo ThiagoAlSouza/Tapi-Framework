@@ -18,9 +18,6 @@ public interface IBaseRepository<T> where T : class
     Task<IEnumerable<T>> GetAllAsync();
     Task AddAsync(T entity);
     Task AddRangeAsync(IEnumerable<T> entities);
-    Task UpdateAsync(T entity);
-    Task RemoveAsync(T entity);
-    Task RemoveRangeAsync(IEnumerable<T> entity);
 
     #endregion
 }

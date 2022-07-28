@@ -7,7 +7,7 @@ public abstract class BaseRepository<T> : IBaseRepository<T> where T : class
 {
     private readonly DbContext context;
 
-    public BaseRepository(DbContext context)
+    protected BaseRepository(DbContext context)
     {
         this.context = context;
     }
@@ -63,21 +63,6 @@ public abstract class BaseRepository<T> : IBaseRepository<T> where T : class
     {
         await context.Set<T>().AddRangeAsync(entities);
         await context.SaveChangesAsync();
-    }
-
-    public Task UpdateAsync(T entity)
-    {
-        throw new NotImplementedException();
-    }
-
-    public Task RemoveAsync(T entity)
-    {
-        throw new NotImplementedException();
-    }
-
-    public Task RemoveRangeAsync(IEnumerable<T> entity)
-    {
-        throw new NotImplementedException();
     }
 
     #endregion
