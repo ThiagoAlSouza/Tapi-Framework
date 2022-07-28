@@ -33,7 +33,8 @@ public abstract class BaseRepository<T> : IBaseRepository<T> where T : class
 
     public void Update(T entity)
     {
-        throw new NotImplementedException();
+        context.Entry(entity).State = EntityState.Modified;
+        context.SaveChanges();
     }
 
     public void Remove(T entity)
