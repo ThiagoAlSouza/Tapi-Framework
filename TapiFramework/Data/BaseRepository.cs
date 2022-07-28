@@ -16,17 +16,19 @@ public abstract class BaseRepository<T> : IBaseRepository<T> where T : class
 
     public IEnumerable<T> GetAll()
     {
-        throw new NotImplementedException();
+        return context.Set<T>().AsNoTracking().ToList();
     }
 
     public void Add(T entity)
     {
-        throw new NotImplementedException();
+        context.Set<T>().Add(entity);
+        context.SaveChanges();
     }
 
-    public void AddRange(IEnumerable<T> entity)
+    public void AddRange(IEnumerable<T> entities)   
     {
-        throw new NotImplementedException();
+        context.Set<T>().AddRange(entities);
+        context.SaveChanges();
     }
 
     public void Update(T entity)
@@ -39,7 +41,7 @@ public abstract class BaseRepository<T> : IBaseRepository<T> where T : class
         throw new NotImplementedException();
     }
 
-    public void RemoveRange(IEnumerable<T> entity)
+    public void RemoveRange(IEnumerable<T> entities)    
     {
         throw new NotImplementedException();
     }
@@ -50,7 +52,7 @@ public abstract class BaseRepository<T> : IBaseRepository<T> where T : class
 
     public async Task<IEnumerable<T>> GetAllAsync()
     {
-        return await context.Set<T>().ToListAsync();
+        return await context.Set<T>().AsNoTracking().ToListAsync();
     }
 
     public async Task AddAsync(T entity)
