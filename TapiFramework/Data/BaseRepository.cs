@@ -39,12 +39,14 @@ public abstract class BaseRepository<T> : IBaseRepository<T> where T : class
 
     public void Remove(T entity)
     {
-        throw new NotImplementedException();
+        context.Set<T>().Remove(entity);
+        context.SaveChanges();
     }
 
     public void RemoveRange(IEnumerable<T> entities)    
     {
-        throw new NotImplementedException();
+        context.Set<T>().RemoveRange(entities);
+        context.SaveChanges();
     }
 
     #endregion
