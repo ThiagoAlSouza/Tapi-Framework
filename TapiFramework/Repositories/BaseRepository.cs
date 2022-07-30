@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using TapiFramework.Interfaces;
+using TapiFramework.Repositories.Interfaces;
 
-namespace TapiFramework.Data;
+namespace TapiFramework.Repositories;
 
 public abstract class BaseRepository<T> : IBaseRepository<T> where T : class
 {
@@ -25,7 +25,7 @@ public abstract class BaseRepository<T> : IBaseRepository<T> where T : class
         context.SaveChanges();
     }
 
-    public void AddRange(IEnumerable<T> entities)   
+    public void AddRange(IEnumerable<T> entities)
     {
         context.Set<T>().AddRange(entities);
         context.SaveChanges();
@@ -43,7 +43,7 @@ public abstract class BaseRepository<T> : IBaseRepository<T> where T : class
         context.SaveChanges();
     }
 
-    public void RemoveRange(IEnumerable<T> entities)    
+    public void RemoveRange(IEnumerable<T> entities)
     {
         context.Set<T>().RemoveRange(entities);
         context.SaveChanges();

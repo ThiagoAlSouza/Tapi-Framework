@@ -1,4 +1,4 @@
-﻿namespace TapiFramework.Interfaces;
+﻿namespace TapiFramework.Repositories.Interfaces;
 
 public interface IBaseRepository<T> where T : class
 {
