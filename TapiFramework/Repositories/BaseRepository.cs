@@ -5,48 +5,48 @@ namespace TapiFramework.Repositories;
 
 public abstract class BaseRepository<T> : IBaseRepository<T> where T : class
 {
-    private readonly DbContext context;
+    private readonly DbContext _context;
 
     protected BaseRepository(DbContext context)
     {
-        this.context = context;
+        _context = context;
     }
 
     #region Methods Synchronous
 
     public IEnumerable<T> GetAll()
     {
-        return context.Set<T>().AsNoTracking().ToList();
+        return _context.Set<T>().AsNoTracking().ToList();
     }
 
     public void Add(T entity)
     {
-        context.Set<T>().Add(entity);
-        context.SaveChanges();
+        _context.Set<T>().Add(entity);
+        _context.SaveChanges();
     }
 
     public void AddRange(IEnumerable<T> entities)
     {
-        context.Set<T>().AddRange(entities);
-        context.SaveChanges();
+        _context.Set<T>().AddRange(entities);
+        _context.SaveChanges();
     }
 
     public void Update(T entity)
     {
-        context.Entry(entity).State = EntityState.Modified;
-        context.SaveChanges();
+        _context.Entry(entity).State = EntityState.Modified;
+        _context.SaveChanges();
     }
 
     public void Remove(T entity)
     {
-        context.Set<T>().Remove(entity);
-        context.SaveChanges();
+        _context.Set<T>().Remove(entity);
+        _context.SaveChanges();
     }
 
     public void RemoveRange(IEnumerable<T> entities)
     {
-        context.Set<T>().RemoveRange(entities);
-        context.SaveChanges();
+        _context.Set<T>().RemoveRange(entities);
+        _context.SaveChanges();
     }
 
     #endregion
@@ -55,19 +55,19 @@ public abstract class BaseRepository<T> : IBaseRepository<T> where T : class
 
     public async Task<IEnumerable<T>> GetAllAsync()
     {
-        return await context.Set<T>().AsNoTracking().ToListAsync();
+        return await _context.Set<T>().AsNoTracking().ToListAsync();
     }
 
     public async Task AddAsync(T entity)
     {
-        await context.Set<T>().AddAsync(entity);
-        await context.SaveChangesAsync();
+        await _context.Set<T>().AddAsync(entity);
+        await _context.SaveChangesAsync();
     }
 
     public async Task AddRangeAsync(IEnumerable<T> entities)
     {
-        await context.Set<T>().AddRangeAsync(entities);
-        await context.SaveChangesAsync();
+        await _context.Set<T>().AddRangeAsync(entities);
+        await _context.SaveChangesAsync();
     }
 
     #endregion
