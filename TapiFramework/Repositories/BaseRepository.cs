@@ -1,9 +1,11 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using TapiFramework.Entities.Interfaces;
 using TapiFramework.Repositories.Interfaces;
 
 namespace TapiFramework.Repositories;
 
-public abstract class BaseRepository<T> : IBaseRepository<T> where T : class
+public abstract class BaseRepository<T> : IBaseRepository<T> 
+    where T : class, IBaseEntity
 {
     private readonly DbContext _context;
 

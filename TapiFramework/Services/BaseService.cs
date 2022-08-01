@@ -1,10 +1,11 @@
-﻿using TapiFramework.Repositories.Interfaces;
+﻿using TapiFramework.Entities.Interfaces;
+using TapiFramework.Repositories.Interfaces;
 using TapiFramework.Services.Interfaces;
 
 namespace TapiFramework.Services;
 
 public class BaseService<T> : IBaseServices<T>
-    where T : class
+    where T : class, IBaseEntity
 {
     private readonly IBaseRepository<T> _baseRepository;
     

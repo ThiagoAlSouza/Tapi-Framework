@@ -1,6 +1,9 @@
-﻿namespace TapiFramework.Repositories.Interfaces;
+﻿using TapiFramework.Entities.Interfaces;
 
-public interface IBaseRepository<T> where T : class
+namespace TapiFramework.Repositories.Interfaces;
+
+public interface IBaseRepository<T> 
+    where T : class, IBaseEntity
 {
     #region Methods Synchronous
 
