@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using TapiFramework.Entities.Interfaces;
-using TapiFramework.Services;
+using TapiFramework.Returns;
 using TapiFramework.Services.Interfaces;
 
 namespace TapiFramework.Controllers;
@@ -26,11 +26,12 @@ public abstract class ControllerBase<TEntity, TBaseService> : ControllerBase
         try
         {
             var list = await _service.GetAllAsync();
-            return Ok(list);
+
+            return Ok(new RequestResult<IEnumerable<TEntity>>(list));
         }
         catch
         {
-            return BadRequest("Error");
+            return BadRequest(new RequestResult<string>("There was an error getting the database data"));
         }
     }
 
