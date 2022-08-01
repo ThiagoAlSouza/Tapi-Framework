@@ -4,7 +4,7 @@ using TapiFramework.Services.Interfaces;
 
 namespace TapiFramework.Services;
 
-public class BaseService<T> : IBaseServices<T>
+public class BaseService<T> : IBaseService<T>
     where T : class, IBaseEntity
 {
     private readonly IBaseRepository<T> _baseRepository;

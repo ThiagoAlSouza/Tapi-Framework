@@ -2,7 +2,7 @@
 
 namespace TapiFramework.Services.Interfaces;
 
-public interface IBaseServices<T>
+public interface IBaseService<T>
     where T : class, IBaseEntity
 {
     #region Methods Synchronous
