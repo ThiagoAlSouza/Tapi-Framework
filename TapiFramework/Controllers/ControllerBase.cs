@@ -31,7 +31,28 @@ public abstract class ControllerBase<TEntity, TBaseService> : ControllerBase
         }
         catch
         {
-            return BadRequest(new RequestResult<string>("There was an error getting the database data"));
+            return BadRequest(new RequestResult<string>("There was an error getting the database data."));
+        }
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> Post([FromBody] TEntity body)
+    {
+        if (!ModelState.IsValid)
+            return BadRequest(new RequestResult<TEntity>("ModelState is not valid."));
+
+        try
+        {
+            if(body == null)
+                return BadRequest(new RequestResult<string>("The body sent is null."));
+
+            await _service.SaveAsync(body);
+
+            return Ok(new RequestResult<TEntity>(body));
+        }
+        catch
+        {
+            return BadRequest(new RequestResult<string>("Error at insert data in database"));
         }
     }
 
