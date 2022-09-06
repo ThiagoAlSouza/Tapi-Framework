@@ -3,7 +3,7 @@
 namespace TapiFramework.Returns;
 
 public class RequestResult<T>
-    where T : class
+    where T : class, IBaseEntity
 {
     #region Constructors
 
@@ -25,15 +25,15 @@ public class RequestResult<T>
 
     public RequestResult(string error)
     {
-       Errors.Add(error);
+       Errors?.Add(error);
     }
 
     #endregion
 
     #region Properties
 
-    public T Data { get; private set; }
-    public IList<string> Errors { get; private set; }
+    public T? Data { get; private set; }
+    public IList<string>? Errors { get; private set; }
 
     #endregion
 }
