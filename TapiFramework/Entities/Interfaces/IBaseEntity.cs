@@ -2,5 +2,9 @@
 
 public interface IBaseEntity
 {
+    #region Methods
 
+    bool Validate();
+
+    #endregion
 }
