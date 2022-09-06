@@ -7,13 +7,13 @@ namespace TapiFramework.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
-public abstract class ControllerBase<TEntity, TBaseService> : ControllerBase
-    where TEntity : class, IBaseEntity
-    where TBaseService : class, IBaseService<TEntity>
+public abstract class ControllerBase<T, TBaseService> : ControllerBase
+    where T : class, IBaseEntity
+    where TBaseService : class, IBaseService<T>
 {
-    private readonly IBaseService<TEntity> _service;
+    private readonly IBaseService<T> _service;
 
-    protected ControllerBase(IBaseService<TEntity> baseService)
+    protected ControllerBase(IBaseService<T> baseService)
     {
         _service = baseService;
     }
@@ -27,32 +27,32 @@ public abstract class ControllerBase<TEntity, TBaseService> : ControllerBase
         {
             var list = await _service.GetAllAsync();
 
-            return Ok(new RequestResult<IEnumerable<TEntity>>(list));
+            return Ok(new RequestResult<IEnumerable<T>>(list));
         }
         catch
         {
-            return BadRequest(new RequestResult<string>("There was an error getting the database data."));
+            return BadRequest(new RequestResult<T>("There was an error getting the database data."));
         }
     }
 
     [HttpPost]
-    public async Task<IActionResult> Post([FromBody] TEntity body)
+    public async Task<IActionResult> Post([FromBody] T body)
     {
         if (!ModelState.IsValid)
-            return BadRequest(new RequestResult<TEntity>("ModelState is not valid."));
+            return BadRequest(new RequestResult<T>("ModelState is not valid."));
 
         try
         {
             if(body == null)
-                return BadRequest(new RequestResult<string>("The body sent is null."));
+                return BadRequest(new RequestResult<T>("The body sent is null."));
 
             await _service.SaveAsync(body);
 
-            return Ok(new RequestResult<TEntity>(body));
+            return Ok(new RequestResult<T>(body));
         }
         catch
         {
-            return BadRequest(new RequestResult<string>("Error at insert data in database"));
+            return BadRequest(new RequestResult<T>("Error at insert data in database"));
         }
     }
 

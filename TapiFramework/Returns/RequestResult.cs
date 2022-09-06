@@ -3,7 +3,7 @@
 namespace TapiFramework.Returns;
 
 public class RequestResult<T>
-    where T : class, IBaseEntity
+    where T : class
 {
     #region Constructors
 
