@@ -48,9 +48,6 @@ public abstract class ControllerBase<TEntity, TBaseService> : ControllerBase
     {
         try
         {
-            if(body == null)
-                return BadRequest(new RequestResult<TEntity>("The body sent is null."));
-
             await _service.SaveAsync(body);
 
             return Ok(new RequestResult<TEntity>(body));
