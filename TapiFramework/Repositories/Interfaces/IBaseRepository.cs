@@ -8,6 +8,7 @@ public interface IBaseRepository<T>
     #region Methods Synchronous
 
     IEnumerable<T> GetAll();
+    T GetById(Object obj);
     void Add(T entity);
     void AddRange(IEnumerable<T> entities);
     void Update(T entity);

@@ -21,6 +21,11 @@ public abstract class BaseRepository<T> : IBaseRepository<T>
         return _context.Set<T>().AsNoTracking().ToList();
     }
 
+    public T GetById(Object obj)
+    {
+        return null;
+    }
+
     public void Add(T entity)
     {
         _context.Set<T>().Add(entity);
