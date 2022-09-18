@@ -73,5 +73,20 @@ public abstract class ControllerBase<TEntity, TBaseService> : ControllerBase
         }
     }
 
+    [HttpDelete]
+    public IActionResult Delete([FromBody] TEntity body)
+    {
+        try
+        {
+            _service.Delete(body);
+
+            return Ok(new RequestResult<TEntity>(body));
+        }
+        catch
+        {
+            return BadRequest(new RequestResult<TEntity>("Error at delete data in database"));
+        }
+    }
+
     #endregion
 }
