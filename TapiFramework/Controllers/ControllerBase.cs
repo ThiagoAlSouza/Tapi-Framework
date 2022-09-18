@@ -58,5 +58,20 @@ public abstract class ControllerBase<TEntity, TBaseService> : ControllerBase
         }
     }
 
+    [HttpPut]
+    public IActionResult Put([FromBody] TEntity body)
+    {
+        try
+        {
+            _service.Update(body);
+
+            return Ok(new RequestResult<TEntity>(body));
+        }
+        catch
+        {
+            return BadRequest(new RequestResult<TEntity>("Error at update data in database"));
+        }
+    }
+
     #endregion
 }
